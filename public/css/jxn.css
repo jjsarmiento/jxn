@@ -1,3 +1,25 @@
 body {
-    /*background-color: #ECF0F1;*/
+    background-color: #333333;
+}
+
+.well {
+    /*background-color: white;*/
+    background-color: #ECF0F1;
+}
+
+.text-notice {
+    color: #7F8C8D;
+    font-size: 0.8em;
+}
+
+.text-center {
+    text-align: center;
+}
+
+h3 {
+    margin: 0;
+}
+
+hr {
+    margin: 0.8em;
 }

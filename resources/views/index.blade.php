@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Page Title')
+@section('title', 'JXN Company')
 @section('head')
     @parent
     <style>
@@ -20,31 +20,67 @@
         <div class="col-md-8">
             <div class="well well-xs">
                 <h3>Register</h3>
+                <hr/>
                 {{ Form::open(['url' => '/doRegister']) }}
-                    {{ Form::text('name', '',['required' => 'required', 'placeholder' => 'Name']) }}
-                    {{ Form::email('email', '',['required' => 'required', 'placeholder' => 'Email']) }}
-                    {{ Form::password('password', ['required' => 'required', 'placeholder' => 'Password']) }}
-                    {{ Form::button('ADD', ['type' => 'submit']) }}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Player Name</label>
+                                {{ Form::text('name', '',['required' => 'required', 'placeholder' => 'Name', 'class' => 'form-control']) }}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Email</label>
+                                {{ Form::email('email', '',['required' => 'required', 'placeholder' => 'Email', 'class' => 'form-control']) }}
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                {{ Form::password('password', ['required' => 'required', 'placeholder' => 'Password', 'class' => 'form-control']) }}
+                            </div>
+                            <hr/>
+                            <div>
+                                <span class="text-notice">
+                                    By clicker "Register" you accept the terms and agreements implemented by the JXN Company 2016
+                                </span>
+                                <br/><br/>
+                                {{ Form::button('Register', ['type' => 'submit', 'class' => 'btn btn-xs btn-success']) }}
+                            </div>
+                        </div>
+                    </div>
                 {{ Form::close() }}
 
                 @if(count($errors) > 0)
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
                 @endif
             </div>
         </div>
         <div class="col-md-4">
             <div class="well well-xs">
-                {{ Form::open(['url' => '/doLogin']) }}
-                    {{ Form::text('email', '',['required' => 'required', 'placeholder' => 'Email']) }}
-                    {{ Form::password('password', ['required' => 'required', 'placeholder' => 'Password']) }}<Br/>
-                    Remember me?
-                    {{ Form::checkbox('remember_me', 1, []) }}<br/>
-                    {{ Form::button('Login', ['type' => 'submit']) }}
-                {{ Form::close() }}
+                <div class="row">
+                    {{ Form::open(['url' => '/doLogin']) }}
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                {{ Form::text('email', '',['required' => 'required', 'placeholder' => 'Email', 'class' => 'form-control']) }}
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                {{ Form::password('password', ['required' => 'required', 'placeholder' => 'Password', 'class' => 'form-control']) }}<Br/>
+                            </div>
+                            <div class="form-group">
+                                Remember me {{ Form::checkbox('remember_me', 1, []) }}
+                            </div>
+                            {{ Form::button('Login', ['type' => 'submit', 'class' => 'btn btn-primary btn-block']) }}
+                        </div>
+                    {{ Form::close() }}
+                </div>
             </div>
         </div>
     </div>

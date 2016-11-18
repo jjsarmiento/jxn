@@ -14,7 +14,7 @@ Route::post('/doLogin', 'Controller@doLogin');
 Route::post('/doRegister', 'Controller@doRegister');
 Route::get('/', 'Controller@index');
 
-Route::get('/doLogout', function(){
+Route::get('/logout', function(){
     \Illuminate\Support\Facades\Auth::logout();
     // redirect to a protected route after logout to protect caching of page in user's browser - Jan Sarmiento
     return redirect('/home');
@@ -23,8 +23,11 @@ Route::get('/doLogout', function(){
 //Auth::routes();
 Route::group(['middleware' => 'AuthJXN'], function(){
     Route::get('/home', 'HomeController@index');
-    Route::post('/doAdd', 'HomeController@doAdd');
-    Route::get('/delete={id}', 'HomeController@delete');
+
+    // ROUTES EXCLUSIVE FOR MASTER ROLES - Jan
+    Route::group(['middleware' => 'AuthMaster'], function(){
+
+    });
 });
 
 // handling of missing/non-existing routes are handled at Exceptions/Handler.php

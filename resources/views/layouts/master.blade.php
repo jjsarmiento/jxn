@@ -2,6 +2,7 @@
     <head>
         <title>@yield('title')</title>
         <link rel="stylesheet" type="text/css"  href="{{ URL::asset('bootstrap-3.3.5-dist/css/bootstrap.min.css') }}" />
+        <link rel="stylesheet" type="text/css"  href="{{ URL::asset('font-awesome-4.7.0/css/font-awesome.min.css') }}" />
         <link rel="stylesheet" type="text/css"  href="{{ URL::asset('css/jxn.css') }}" />
         @yield('head')
         @show

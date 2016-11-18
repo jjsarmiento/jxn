@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Student;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -48,7 +47,10 @@ class Controller extends BaseController
             'name'      =>  $request->name,
             'email'     =>  $request->email,
             'password'  =>  Hash::make($request->password),
+            'role'      =>  'PLAYER'
         ]);
+
+        Auth::attempt(['email' => $request->email, 'password' => $request->password], false);
 
         return redirect('/');
     }
